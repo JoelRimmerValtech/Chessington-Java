@@ -1,5 +1,6 @@
 package training.chessington.model.pieces;
 
+import org.apache.logging.log4j.core.pattern.AbstractStyleNameConverter;
 import training.chessington.model.Board;
 import training.chessington.model.Coordinates;
 import training.chessington.model.Move;
@@ -24,6 +25,19 @@ public class Pawn extends AbstractPiece {
             Move move = new Move(from, from.plus(1,0));
             pawnMoves.add(move);
         }
+        if (colour.equals(PlayerColour.WHITE)) {
+            if (from.getRow() == 6) {
+                Move move = new Move(from, from.plus(-2, 0));
+                pawnMoves.add(move);
+            }
+        }
+        if (colour.equals(PlayerColour.BLACK)) {
+            if (from.getRow()== 1) {
+                Move move = new Move(from, from.plus(2,0));
+                pawnMoves.add(move);
+            }
+        }
+
         return pawnMoves;
     }
 }
