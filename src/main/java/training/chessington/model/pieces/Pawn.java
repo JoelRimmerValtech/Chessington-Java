@@ -19,22 +19,30 @@ public class Pawn extends AbstractPiece {
         ArrayList<Move> pawnMoves = new ArrayList<>();
         if (colour.equals(PlayerColour.WHITE)) {
             Move move = new Move(from, from.plus(-1, 0));
-            pawnMoves.add(move);
-        }
-        if (colour.equals(PlayerColour.BLACK)) {
-            Move move = new Move(from, from.plus(1,0));
-            pawnMoves.add(move);
-        }
-        if (colour.equals(PlayerColour.WHITE)) {
-            if (from.getRow() == 6) {
-                Move move = new Move(from, from.plus(-2, 0));
+            if (board.get(move.getTo()) == null) {
                 pawnMoves.add(move);
             }
         }
         if (colour.equals(PlayerColour.BLACK)) {
-            if (from.getRow()== 1) {
-                Move move = new Move(from, from.plus(2,0));
+            Move move = new Move(from, from.plus(1, 0));
+            if (board.get(move.getTo()) == null) {
                 pawnMoves.add(move);
+            }
+        }
+        if (colour.equals(PlayerColour.WHITE)) {
+            if (from.getRow() == 6) {
+                Move move = new Move(from, from.plus(-2, 0));
+                if (board.get(move.getTo()) == null) {
+                    pawnMoves.add(move);
+                }
+            }
+        }
+        if (colour.equals(PlayerColour.BLACK)) {
+            if (from.getRow()== 1) {
+                Move move = new Move(from, from.plus(2, 0));
+                if (board.get(move.getTo()) == null) {
+                    pawnMoves.add(move);
+                }
             }
         }
 
