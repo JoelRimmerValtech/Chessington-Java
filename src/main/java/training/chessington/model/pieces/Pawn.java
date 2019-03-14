@@ -18,15 +18,19 @@ public class Pawn extends AbstractPiece {
     public List<Move> getAllowedMoves(Coordinates from, Board board) {
         ArrayList<Move> pawnMoves = new ArrayList<>();
         if (colour.equals(PlayerColour.WHITE)) {
-            Move move = new Move(from, from.plus(-1, 0));
-            if (board.get(move.getTo()) == null) {
-                pawnMoves.add(move);
+            if (from.getRow() > 0) {
+                Move move = new Move(from, from.plus(-1, 0));
+                if (board.get(move.getTo()) == null) {
+                    pawnMoves.add(move);
+                }
             }
         }
         if (colour.equals(PlayerColour.BLACK)) {
-            Move move = new Move(from, from.plus(1, 0));
-            if (board.get(move.getTo()) == null) {
-                pawnMoves.add(move);
+            if (from.getRow() < 7) {
+                Move move = new Move(from, from.plus(1, 0));
+                if (board.get(move.getTo()) == null) {
+                    pawnMoves.add(move);
+                }
             }
         }
         if (colour.equals(PlayerColour.WHITE)) {
